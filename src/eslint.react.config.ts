@@ -11,11 +11,11 @@ import pluginReactRefresh from "eslint-plugin-react-refresh";
  *
  * 使用方式：
  *   // eslint.config.js
- *   import { eslintReactConfig } from "@craig/lint-config";
+ *   import eslintReactConfig from "@craig/lint-config/eslint-react";
  *   export default eslintReactConfig;
  *
  * 或者自定义扩展：
- *   import { eslintReactConfig } from "@craig/lint-config";
+ *   import eslintReactConfig from "@craig/lint-config/eslint-react";
  *   export default [
  *     ...eslintReactConfig,
  *     { rules: { "no-console": "warn" } }

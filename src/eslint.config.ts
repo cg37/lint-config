@@ -11,11 +11,11 @@ import prettierRecommended from "eslint-plugin-prettier/recommended";
  *
  * 使用方式：
  *   // eslint.config.js
- *   import { eslintConfig } from "@craig/lint-config";
+ *   import eslintConfig from "@craig/lint-config/eslint";
  *   export default eslintConfig;
  *
  * 或者自定义扩展：
- *   import { eslintConfig } from "@craig/lint-config";
+ *   import eslintConfig from "@craig/lint-config/eslint";
  *   export default [
  *     ...eslintConfig,
  *     { rules: { "no-console": "warn" } }

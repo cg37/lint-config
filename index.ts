@@ -9,18 +9,30 @@
  *   - commitlint 提交信息规范
  *   - lint-staged 推荐配置
  *
- * 导出：
+ * === 推荐使用子路径导入（按需加载，零副作用） ===
+ *
+ *   // 基础 TypeScript 项目
+ *   import eslintConfig from "@craig/lint-config/eslint";
+ *
+ *   // React 项目
+ *   import eslintReactConfig from "@craig/lint-config/eslint-react";
+ *
+ *   // Vue 项目
+ *   import eslintVueConfig from "@craig/lint-config/eslint-vue";
+ *
+ *   // Prettier / commitlint（也可从主入口导入）
+ *   import prettierConfig from "@craig/lint-config/prettier";
+ *   import commitlintConfig from "@craig/lint-config/commitlint";
+ *
+ * === 主入口仅导出通用配置（不含 React / Vue 插件依赖） ===
+ *
  *   - eslintConfig       基础 TypeScript 项目
- *   - eslintReactConfig   React + TypeScript 项目
- *   - eslintVueConfig     Vue 3 + TypeScript 项目
  *   - prettierConfig      共享 Prettier 配置
  *   - commitlintConfig    共享 commitlint 配置
  *   - lintStagedConfig    推荐 lint-staged 配置
  */
 
 export { default as eslintConfig } from "./src/eslint.config.js";
-export { default as eslintReactConfig } from "./src/eslint.react.config.js";
-export { default as eslintVueConfig } from "./src/eslint.vue.config.js";
 export { default as prettierConfig } from "./src/prettier.config.js";
 export { default as commitlintConfig } from "./src/commitlint.config.js";
 
