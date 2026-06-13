@@ -321,6 +321,42 @@ import tseslint from "typescript-eslint";
 
 ---
 
+## 发布
+
+本项目使用 GitHub Actions 自动发布到 npm。
+
+### 前置条件
+
+在 GitHub 仓库的 **Settings → Secrets and variables → Actions** 中添加：
+
+| Secret      | 说明                                           |
+| ----------- | ---------------------------------------------- |
+| `NPM_TOKEN` | npm 的 Automation Access Token（用于自动发布） |
+
+### 发布步骤
+
+```bash
+# 1. 更新版本号
+npm version patch   # 或 minor / major
+
+# 2. 推送 tag（触发发布）
+git push --follow-tags
+```
+
+CI 会在 Push tag 或创建 GitHub Release 时自动运行以下检查，通过后发布到 npm：
+
+```mermaid
+flowchart LR
+    A["git push --follow-tags<br/>(v1.0.1)"] --> B[TypeScript 类型检查]
+    B --> C[Prettier 格式检查]
+    C --> D["npm publish --provenance"]
+    D --> E["@craig/lint-config@1.0.1<br/>已发布到 npm"]
+```
+
+> `--provenance` 会生成 npm 来源证明，消费者可通过 `npm audit signatures` 验证包确实来自本仓库。
+
+---
+
 ## 许可
 
 MIT
