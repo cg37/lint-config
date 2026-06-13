@@ -1,0 +1,78 @@
+{
+    "name": "@craig/lint-config",
+    "version": "1.0.0",
+    "description": "Shared ESLint + Prettier + commitlint + lint-staged config for TypeScript / React / Vue projects",
+    "type": "module",
+    "main": "./index.js",
+    "exports": {
+        ".": "./index.js",
+        "./eslint": "./src/eslint.config.js",
+        "./eslint-react": "./src/eslint.react.config.js",
+        "./eslint-vue": "./src/eslint.vue.config.js",
+        "./prettier": "./src/prettier.config.js",
+        "./commitlint": "./src/commitlint.config.js"
+    },
+    "files": [
+        "index.js",
+        "src/"
+    ],
+    "keywords": [
+        "eslint-config",
+        "prettier-config",
+        "commitlint-config",
+        "vue",
+        "react",
+        "typescript"
+    ],
+    "license": "MIT",
+    "peerDependencies": {
+        "@commitlint/cli": ">=19.0.0",
+        "@eslint/js": ">=9.0.0",
+        "eslint": ">=9.0.0",
+        "eslint-config-prettier": ">=10.0.0",
+        "eslint-plugin-prettier": ">=5.0.0",
+        "eslint-plugin-react": ">=7.0.0",
+        "eslint-plugin-react-hooks": ">=5.0.0",
+        "eslint-plugin-react-refresh": ">=0.4.0",
+        "eslint-plugin-vue": ">=10.0.0",
+        "globals": ">=16.0.0",
+        "prettier": ">=3.0.0",
+        "typescript-eslint": ">=8.0.0",
+        "vue-eslint-parser": ">=10.0.0"
+    },
+    "peerDependenciesMeta": {
+        "@commitlint/cli": {
+            "optional": true
+        },
+        "eslint-plugin-react": {
+            "optional": true
+        },
+        "eslint-plugin-react-hooks": {
+            "optional": true
+        },
+        "eslint-plugin-react-refresh": {
+            "optional": true
+        },
+        "eslint-plugin-vue": {
+            "optional": true
+        },
+        "vue-eslint-parser": {
+            "optional": true
+        }
+    },
+    "devDependencies": {
+        "@commitlint/cli": "^19.8.1",
+        "@eslint/js": "^9.27.0",
+        "eslint": "^9.27.0",
+        "eslint-config-prettier": "^10.1.5",
+        "eslint-plugin-prettier": "^5.4.0",
+        "eslint-plugin-react": "^7.37.0",
+        "eslint-plugin-react-hooks": "^5.1.0",
+        "eslint-plugin-react-refresh": "^0.4.18",
+        "eslint-plugin-vue": "^10.1.0",
+        "globals": "^16.2.0",
+        "prettier": "^3.0.0",
+        "typescript-eslint": "^8.32.1",
+        "vue-eslint-parser": "^10.1.3"
+    }
+}
