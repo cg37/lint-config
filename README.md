@@ -19,10 +19,19 @@ TypeScript / React / Vue 项目共享代码规范配置包，开箱即用。
 > **请始终使用子路径导入**（如 `/eslint-react`、`/eslint-vue`）。
 > 主入口不含 React / Vue 配置，这是有意为之——避免纯 Vue 项目被迫加载 React 插件（反之亦然）。
 > 详见下方 [为什么需要子路径导入](#为什么需要子路径导入)。
+> [!NOTE]
+> 本包所有依赖声明为 **peerDependencies**，需消费者手动安装。
+> 这是 ESLint 生态的结构性约束，详见 [为什么需要手动安装依赖](#为什么需要手动安装依赖)。
 
 ---
 
 ## 安装
+
+> [!NOTE]
+> 本包的所有依赖均声明为 **peerDependencies**（对等依赖），而非 `dependencies`。
+> 这是 ESLint / Prettier 配置包生态的惯例——ESLint 和插件必须在**消费者项目的 `node_modules` 顶层**解析，
+> 否则会出现 `Failed to load plugin` 或多实例冲突。
+> 详见 [为什么需要手动安装依赖](#为什么需要手动安装依赖)。
 
 ### 所有项目都需要
 
@@ -244,6 +253,47 @@ flowchart LR
 1. `git add` 暂存文件
 2. **pre-commit**：lint-staged 对暂存文件运行 ESLint + Prettier
 3. **commit-msg**：commitlint 校验提交信息是否符合 Conventional Commits
+
+---
+
+## 为什么需要手动安装依赖
+
+`@craig/lint-config` 的所有依赖都声明为 **peerDependencies**，原因有三：
+
+### 1. ESLint 插件必须在消费方解析
+
+编译产物中的 import 语句：
+
+```js
+import js from "@eslint/js";
+import tseslint from "typescript-eslint";
+```
+
+这些模块在**运行时**由 Node.js 从消费者项目的 `node_modules/` 解析。如果它们作为 `dependencies` 嵌套在 `@craig/lint-config/node_modules/` 中，ESLint 的插件加载机制找不到它们，直接报 `Failed to load plugin`。
+
+### 2. ESLint / Prettier 必须全局唯一
+
+同一项目中不能存在两份 ESLint 或 Prettier 实例——插件的 rule 定义只会注册到**第一个被加载的实例**。如果本包自带了一份，消费者的项目也有一份，就会出现 `Definition for rule '...' was not found` 这类诡异错误。
+
+### 3. 版本控制权归消费者
+
+```json
+"peerDependencies": {
+    "eslint": ">=9.0.0",
+    "prettier": ">=3.0.0"
+}
+```
+
+消费者可以自由升级 ESLint/Prettier，不需要等待本包发版。这是 npm 生态中所有 `eslint-config-*` / `prettier-config-*` 包的通用做法。
+
+| 对比   | `dependencies`             | `peerDependencies`                 |
+| ------ | -------------------------- | ---------------------------------- |
+| 安装   | 自动安装，一条命令         | 手动安装，命令较长                 |
+| 解析   | 嵌套在包内 → ESLint 找不到 | 项目顶层 → ESLint 能正确解析       |
+| 版本   | 被包锁定，消费者无法控制   | 消费者自由选择，只要满足 `>=` 范围 |
+| 多实例 | 可能安装两份 → 诡异报错    | 始终只有一份                       |
+
+**结论**：长安装命令是 ESLint 架构限制带来的必要代价，不是偷懒。
 
 ---
 
