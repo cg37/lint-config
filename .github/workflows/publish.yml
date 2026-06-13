@@ -12,8 +12,9 @@ on:
                 default: false
                 required: false
 permissions:
-    id-token: write
+    id-token: write # Required for OIDC
     contents: read
+
 jobs:
     publish:
         runs-on: ubuntu-latest
@@ -24,13 +25,13 @@ jobs:
             contents: read
             id-token: write
         steps:
-            - uses: actions/checkout@v4
+            - uses: actions/checkout@v6
 
-            - uses: actions/setup-node@v4
+            - uses: actions/setup-node@v6
               with:
-                  node-version: "22"
-                  cache: "npm"
+                  node-version: "24"
                   registry-url: "https://registry.npmjs.org"
+                  package-manager-cache: false # never use caching in release builds
 
             - run: npm ci
 
@@ -43,11 +44,9 @@ jobs:
             - name: Publish (dry-run)
               if: ${{ github.event.inputs.dry-run == 'true' }}
               run: npm publish --provenance --access public --dry-run
-              env:
-                  NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
 
             - name: Publish
               if: ${{ github.event.inputs.dry-run != 'true' }}
               run: npm publish --provenance --access public
               env:
-                  NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+                  name: Publish Package
