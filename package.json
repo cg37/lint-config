@@ -3,19 +3,43 @@
     "version": "1.0.0",
     "description": "Shared ESLint + Prettier + commitlint + lint-staged config for TypeScript / React / Vue projects",
     "type": "module",
-    "main": "./index.js",
+    "main": "./dist/index.js",
+    "types": "./dist/index.d.ts",
     "exports": {
-        ".": "./index.js",
-        "./eslint": "./src/eslint.config.js",
-        "./eslint-react": "./src/eslint.react.config.js",
-        "./eslint-vue": "./src/eslint.vue.config.js",
-        "./prettier": "./src/prettier.config.js",
-        "./commitlint": "./src/commitlint.config.js"
+        ".": {
+            "types": "./dist/index.d.ts",
+            "default": "./dist/index.js"
+        },
+        "./eslint": {
+            "types": "./dist/src/eslint.config.d.ts",
+            "default": "./dist/src/eslint.config.js"
+        },
+        "./eslint-react": {
+            "types": "./dist/src/eslint.react.config.d.ts",
+            "default": "./dist/src/eslint.react.config.js"
+        },
+        "./eslint-vue": {
+            "types": "./dist/src/eslint.vue.config.d.ts",
+            "default": "./dist/src/eslint.vue.config.js"
+        },
+        "./prettier": {
+            "types": "./dist/src/prettier.config.d.ts",
+            "default": "./dist/src/prettier.config.js"
+        },
+        "./commitlint": {
+            "types": "./dist/src/commitlint.config.d.ts",
+            "default": "./dist/src/commitlint.config.js"
+        }
     },
     "files": [
-        "index.js",
-        "src/"
+        "dist/"
     ],
+    "scripts": {
+        "build": "tsc",
+        "prepublishOnly": "npm run build",
+        "format": "./node_modules/.bin/prettier --config prettier.config.js --write \"**/*.{ts,js,mjs,cjs,json,md}\"",
+        "format:check": "./node_modules/.bin/prettier --config prettier.config.js --check \"**/*.{ts,js,mjs,cjs,json,md}\""
+    },
     "keywords": [
         "eslint-config",
         "prettier-config",
@@ -62,6 +86,7 @@
     },
     "devDependencies": {
         "@commitlint/cli": "^19.8.1",
+        "@commitlint/types": "^20.5.0",
         "@eslint/js": "^9.27.0",
         "eslint": "^9.27.0",
         "eslint-config-prettier": "^10.1.5",
@@ -72,6 +97,7 @@
         "eslint-plugin-vue": "^10.1.0",
         "globals": "^16.2.0",
         "prettier": "^3.0.0",
+        "typescript": "^6.0.3",
         "typescript-eslint": "^8.32.1",
         "vue-eslint-parser": "^10.1.3"
     }

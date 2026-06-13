@@ -4,14 +4,14 @@ TypeScript / React / Vue 项目共享代码规范配置包，开箱即用。
 
 ## 包含的配置
 
-| 配置 | 说明 |
-|------|------|
-| **ESLint (基础)** | 适用于纯 TypeScript / JavaScript 项目 |
-| **ESLint (React)** | 基础 + React / JSX / Hooks / Refresh 规则 |
-| **ESLint (Vue)** | 基础 + Vue 3 SFC 规则 |
-| **Prettier** | 代码格式化规则 |
-| **commitlint** | Git 提交信息规范（基于 conventional commits） |
-| **lint-staged** | Git 暂存区文件自动检查（推荐配置） |
+| 配置               | 说明                                          |
+| ------------------ | --------------------------------------------- |
+| **ESLint (基础)**  | 适用于纯 TypeScript / JavaScript 项目         |
+| **ESLint (React)** | 基础 + React / JSX / Hooks / Refresh 规则     |
+| **ESLint (Vue)**   | 基础 + Vue 3 SFC 规则                         |
+| **Prettier**       | 代码格式化规则                                |
+| **commitlint**     | Git 提交信息规范（基于 conventional commits） |
+| **lint-staged**    | Git 暂存区文件自动检查（推荐配置）            |
 
 ## 安装
 
@@ -145,6 +145,7 @@ export default lintStagedConfig;
 ### package.json 推荐 scripts
 
 **纯 TS 项目：**
+
 ```json
 {
     "scripts": {
@@ -157,6 +158,7 @@ export default lintStagedConfig;
 ```
 
 **React 项目：**
+
 ```json
 {
     "scripts": {
@@ -169,6 +171,7 @@ export default lintStagedConfig;
 ```
 
 **Vue 项目：**
+
 ```json
 {
     "scripts": {
@@ -182,30 +185,33 @@ export default lintStagedConfig;
 
 ## Prettier 默认规则
 
-| 规则 | 值 |
-|------|-----|
-| `singleQuote` | `false` (双引号) |
-| `semi` | `true` (保留分号) |
-| `tabWidth` | `4` |
-| `useTabs` | `false` (空格缩进) |
+| 规则            | 值                  |
+| --------------- | ------------------- |
+| `singleQuote`   | `false` (双引号)    |
+| `semi`          | `true` (保留分号)   |
+| `tabWidth`      | `4`                 |
+| `useTabs`       | `false` (空格缩进)  |
 | `trailingComma` | `"none"` (无尾逗号) |
-| `endOfLine` | `"auto"` |
-| `printWidth` | `100` |
+| `endOfLine`     | `"auto"`            |
+| `printWidth`    | `100`               |
 
 ## ESLint 默认规则
 
 ### 基础（所有场景）
+
 - `@eslint/js` recommended
 - `typescript-eslint` recommended
 - `prettier` recommended（与 Prettier 集成，避免冲突）
 - 忽略 `*.d.ts`、`node_modules`、`dist/`、`build/`
 
 ### React 额外规则
+
 - `eslint-plugin-react` flat/recommended + flat/jsx-runtime
 - `eslint-plugin-react-hooks` recommended
 - `eslint-plugin-react-refresh` only-export-components (warn)
 
 ### Vue 额外规则
+
 - `eslint-plugin-vue` flat/essential
 - Vue 组件强制自闭合 (`vue/html-self-closing`)
 
