@@ -6,8 +6,8 @@ TypeScript / React / Vue 项目共享代码规范配置包，开箱即用。
 
 ## 包含的配置
 
-| 子路径导入                        | 说明                                                     |
-| --------------------------------- | -------------------------------------------------------- |
+| 子路径导入                          | 说明                                                     |
+| ----------------------------------- | -------------------------------------------------------- |
 | `@craig37/lint-config/eslint`       | ESLint 基础配置 — 纯 TypeScript / JavaScript 项目        |
 | `@craig37/lint-config/eslint-react` | ESLint React 配置 — 基础 + React / JSX / Hooks           |
 | `@craig37/lint-config/eslint-vue`   | ESLint Vue 配置 — 基础 + Vue 3 SFC                       |
@@ -225,8 +225,8 @@ export default lintStagedConfig;
 
 ## 为什么需要子路径导入
 
-| 导入方式                                                   | 加载的模块                                    | 纯 Vue 项目  | 纯 React 项目 |
-| ---------------------------------------------------------- | --------------------------------------------- | ------------ | ------------- |
+| 导入方式                                                     | 加载的模块                                    | 纯 Vue 项目  | 纯 React 项目 |
+| ------------------------------------------------------------ | --------------------------------------------- | ------------ | ------------- |
 | `import cfg from "@craig37/lint-config/eslint-vue"`          | `eslint.config.js` + `eslint.vue.config.js`   | ✅ 正常      | —             |
 | `import cfg from "@craig37/lint-config/eslint-react"`        | `eslint.config.js` + `eslint.react.config.js` | —            | ✅ 正常       |
 | ~~`import { eslintVueConfig } from "@craig37/lint-config"`~~ | **全部模块**（含 React 插件）                 | ❌ 报错/冗余 | ❌ 报错/冗余  |

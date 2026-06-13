@@ -37,8 +37,8 @@
     "scripts": {
         "build": "./node_modules/.bin/tsc",
         "prepublishOnly": "npm run build",
-        "format": "prettier --config prettier.config.js --write \"**/*.{ts,js,mjs,cjs,json,md}\"",
-        "format:check": "prettier --config prettier.config.js --check \"**/*.{ts,js,mjs,cjs,json,md}\""
+        "format": "./node_modules/.bin/prettier --config prettier.config.js --write \"**/*.{ts,js,mjs,cjs,json,md}\"",
+        "format:check": "./node_modules/.bin/prettier --config prettier.config.js --check \"**/*.{ts,js,mjs,cjs,json,md}\""
     },
     "keywords": [
         "eslint-config",
