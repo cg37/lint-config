@@ -10,11 +10,11 @@ import pluginVue from "eslint-plugin-vue";
  *
  * 使用方式：
  *   // eslint.config.js
- *   import eslintVueConfig from "@craig/lint-config/eslint-vue";
+ *   import eslintVueConfig from "@craig37/lint-config/eslint-vue";
  *   export default eslintVueConfig;
  *
  * 或者自定义扩展：
- *   import eslintVueConfig from "@craig/lint-config/eslint-vue";
+ *   import eslintVueConfig from "@craig37/lint-config/eslint-vue";
  *   export default [
  *     ...eslintVueConfig,
  *     { rules: { "no-console": "warn" } }

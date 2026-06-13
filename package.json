@@ -1,5 +1,5 @@
 {
-    "name": "@craig/lint-config",
+    "name": "@craig37/lint-config",
     "version": "1.0.1",
     "description": "Shared ESLint + Prettier + commitlint + lint-staged config for TypeScript / React / Vue projects",
     "type": "module",
@@ -37,8 +37,8 @@
     "scripts": {
         "build": "./node_modules/.bin/tsc",
         "prepublishOnly": "npm run build",
-        "format": "./node_modules/.bin/prettier --config prettier.config.js --write \"**/*.{ts,js,mjs,cjs,json,md}\"",
-        "format:check": "./node_modules/.bin/prettier --config prettier.config.js --check \"**/*.{ts,js,mjs,cjs,json,md}\""
+        "format": "prettier --config prettier.config.js --write \"**/*.{ts,js,mjs,cjs,json,md}\"",
+        "format:check": "prettier --config prettier.config.js --check \"**/*.{ts,js,mjs,cjs,json,md}\""
     },
     "keywords": [
         "eslint-config",

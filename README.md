@@ -1,4 +1,4 @@
-# @craig/lint-config
+# @craig37/lint-config
 
 TypeScript / React / Vue 项目共享代码规范配置包，开箱即用。
 
@@ -8,12 +8,12 @@ TypeScript / React / Vue 项目共享代码规范配置包，开箱即用。
 
 | 子路径导入                        | 说明                                                     |
 | --------------------------------- | -------------------------------------------------------- |
-| `@craig/lint-config/eslint`       | ESLint 基础配置 — 纯 TypeScript / JavaScript 项目        |
-| `@craig/lint-config/eslint-react` | ESLint React 配置 — 基础 + React / JSX / Hooks           |
-| `@craig/lint-config/eslint-vue`   | ESLint Vue 配置 — 基础 + Vue 3 SFC                       |
-| `@craig/lint-config/prettier`     | Prettier 格式化规则                                      |
-| `@craig/lint-config/commitlint`   | commitlint 提交信息规范（Conventional Commits）          |
-| `@craig/lint-config`（主入口）    | 通用配置：基础 ESLint、Prettier、commitlint、lint-staged |
+| `@craig37/lint-config/eslint`       | ESLint 基础配置 — 纯 TypeScript / JavaScript 项目        |
+| `@craig37/lint-config/eslint-react` | ESLint React 配置 — 基础 + React / JSX / Hooks           |
+| `@craig37/lint-config/eslint-vue`   | ESLint Vue 配置 — 基础 + Vue 3 SFC                       |
+| `@craig37/lint-config/prettier`     | Prettier 格式化规则                                      |
+| `@craig37/lint-config/commitlint`   | commitlint 提交信息规范（Conventional Commits）          |
+| `@craig37/lint-config`（主入口）    | 通用配置：基础 ESLint、Prettier、commitlint、lint-staged |
 
 > [!IMPORTANT]
 > **请始终使用子路径导入**（如 `/eslint-react`、`/eslint-vue`）。
@@ -36,7 +36,7 @@ TypeScript / React / Vue 项目共享代码规范配置包，开箱即用。
 ### 所有项目都需要
 
 ```bash
-pnpm add -D @craig/lint-config eslint prettier typescript-eslint @eslint/js globals eslint-plugin-prettier eslint-config-prettier
+pnpm add -D @craig37/lint-config eslint prettier typescript-eslint @eslint/js globals eslint-plugin-prettier eslint-config-prettier
 ```
 
 > [!NOTE]
@@ -69,7 +69,7 @@ pnpm add -D @commitlint/cli @commitlint/config-conventional
 创建 `eslint.config.js`：
 
 ```js
-import eslintConfig from "@craig/lint-config/eslint";
+import eslintConfig from "@craig37/lint-config/eslint";
 
 export default eslintConfig;
 ```
@@ -77,7 +77,7 @@ export default eslintConfig;
 自定义扩展：
 
 ```js
-import eslintConfig from "@craig/lint-config/eslint";
+import eslintConfig from "@craig37/lint-config/eslint";
 
 export default [
     ...eslintConfig,
@@ -93,7 +93,7 @@ export default [
 ### ESLint — React 项目
 
 ```js
-import eslintReactConfig from "@craig/lint-config/eslint-react";
+import eslintReactConfig from "@craig37/lint-config/eslint-react";
 
 export default eslintReactConfig;
 ```
@@ -112,7 +112,7 @@ export default eslintReactConfig;
 ### ESLint — Vue 项目
 
 ```js
-import eslintVueConfig from "@craig/lint-config/eslint-vue";
+import eslintVueConfig from "@craig37/lint-config/eslint-vue";
 
 export default eslintVueConfig;
 ```
@@ -131,14 +131,14 @@ export default eslintVueConfig;
 
 ```json
 {
-    "prettier": "@craig/lint-config/prettier"
+    "prettier": "@craig37/lint-config/prettier"
 }
 ```
 
 **方式二** — `prettier.config.js`：
 
 ```js
-import prettierConfig from "@craig/lint-config/prettier";
+import prettierConfig from "@craig37/lint-config/prettier";
 export default prettierConfig;
 ```
 
@@ -159,7 +159,7 @@ export default prettierConfig;
 创建 `commitlint.config.js`：
 
 ```js
-import commitlintConfig from "@craig/lint-config/commitlint";
+import commitlintConfig from "@craig37/lint-config/commitlint";
 export default commitlintConfig;
 ```
 
@@ -193,7 +193,7 @@ echo 'npx lint-staged' > .husky/pre-commit
 创建 `lint-staged.config.js`：
 
 ```js
-import { lintStagedConfig } from "@craig/lint-config";
+import { lintStagedConfig } from "@craig37/lint-config";
 export default lintStagedConfig;
 ```
 
@@ -227,9 +227,9 @@ export default lintStagedConfig;
 
 | 导入方式                                                   | 加载的模块                                    | 纯 Vue 项目  | 纯 React 项目 |
 | ---------------------------------------------------------- | --------------------------------------------- | ------------ | ------------- |
-| `import cfg from "@craig/lint-config/eslint-vue"`          | `eslint.config.js` + `eslint.vue.config.js`   | ✅ 正常      | —             |
-| `import cfg from "@craig/lint-config/eslint-react"`        | `eslint.config.js` + `eslint.react.config.js` | —            | ✅ 正常       |
-| ~~`import { eslintVueConfig } from "@craig/lint-config"`~~ | **全部模块**（含 React 插件）                 | ❌ 报错/冗余 | ❌ 报错/冗余  |
+| `import cfg from "@craig37/lint-config/eslint-vue"`          | `eslint.config.js` + `eslint.vue.config.js`   | ✅ 正常      | —             |
+| `import cfg from "@craig37/lint-config/eslint-react"`        | `eslint.config.js` + `eslint.react.config.js` | —            | ✅ 正常       |
+| ~~`import { eslintVueConfig } from "@craig37/lint-config"`~~ | **全部模块**（含 React 插件）                 | ❌ 报错/冗余 | ❌ 报错/冗余  |
 
 ESM 的 `export { ... } from ...` 是**静态急切**的——只要 import 了 barrel 文件，所有 re-export 的模块都会被加载并执行顶层代码。如果 `eslint-plugin-react` 未安装，Node.js 会直接抛出 `MODULE_NOT_FOUND`。
 
@@ -258,7 +258,7 @@ flowchart LR
 
 ## 为什么需要手动安装依赖
 
-`@craig/lint-config` 的所有依赖都声明为 **peerDependencies**，原因有三：
+`@craig37/lint-config` 的所有依赖都声明为 **peerDependencies**，原因有三：
 
 ### 1. ESLint 插件必须在消费方解析
 
@@ -269,7 +269,7 @@ import js from "@eslint/js";
 import tseslint from "typescript-eslint";
 ```
 
-这些模块在**运行时**由 Node.js 从消费者项目的 `node_modules/` 解析。如果它们作为 `dependencies` 嵌套在 `@craig/lint-config/node_modules/` 中，ESLint 的插件加载机制找不到它们，直接报 `Failed to load plugin`。
+这些模块在**运行时**由 Node.js 从消费者项目的 `node_modules/` 解析。如果它们作为 `dependencies` 嵌套在 `@craig37/lint-config/node_modules/` 中，ESLint 的插件加载机制找不到它们，直接报 `Failed to load plugin`。
 
 ### 2. ESLint / Prettier 必须全局唯一
 
@@ -350,7 +350,7 @@ flowchart LR
     A["git push --follow-tags<br/>(v1.0.1)"] --> B[TypeScript 类型检查]
     B --> C[Prettier 格式检查]
     C --> D["npm publish --provenance"]
-    D --> E["@craig/lint-config@1.0.1<br/>已发布到 npm"]
+    D --> E["@craig37/lint-config@1.0.1<br/>已发布到 npm"]
 ```
 
 > `--provenance` 会生成 npm 来源证明，消费者可通过 `npm audit signatures` 验证包确实来自本仓库。

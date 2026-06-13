@@ -5,10 +5,10 @@ import type { Config } from "prettier";
  *
  * 使用方式：
  *   在 package.json 中：
- *     "prettier": "@craig/lint-config/prettier"
+ *     "prettier": "@craig37/lint-config/prettier"
  *
  *   或在 .prettierrc.js / prettier.config.js 中：
- *     import prettierConfig from "@craig/lint-config/prettier";
+ *     import prettierConfig from "@craig37/lint-config/prettier";
  *     export default prettierConfig;
  */
 const prettierConfig: Config = {

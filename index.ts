@@ -1,5 +1,5 @@
 /**
- * @craig/lint-config
+ * @craig37/lint-config
  *
  * 多场景共享代码规范配置包，开箱即用。
  *
@@ -12,17 +12,17 @@
  * === 推荐使用子路径导入（按需加载，零副作用） ===
  *
  *   // 基础 TypeScript 项目
- *   import eslintConfig from "@craig/lint-config/eslint";
+ *   import eslintConfig from "@craig37/lint-config/eslint";
  *
  *   // React 项目
- *   import eslintReactConfig from "@craig/lint-config/eslint-react";
+ *   import eslintReactConfig from "@craig37/lint-config/eslint-react";
  *
  *   // Vue 项目
- *   import eslintVueConfig from "@craig/lint-config/eslint-vue";
+ *   import eslintVueConfig from "@craig37/lint-config/eslint-vue";
  *
  *   // Prettier / commitlint（也可从主入口导入）
- *   import prettierConfig from "@craig/lint-config/prettier";
- *   import commitlintConfig from "@craig/lint-config/commitlint";
+ *   import prettierConfig from "@craig37/lint-config/prettier";
+ *   import commitlintConfig from "@craig37/lint-config/commitlint";
  *
  * === 主入口仅导出通用配置（不含 React / Vue 插件依赖） ===
  *
