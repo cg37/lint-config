@@ -6,6 +6,13 @@ on:
             - "v*"
     release:
         types: [published]
+    workflow_dispatch:
+        inputs:
+            dry-run:
+                description: "仅预检，不实际发布"
+                type: boolean
+                default: false
+                required: false
 
 jobs:
     publish:
@@ -30,7 +37,12 @@ jobs:
             - name: Format check
               run: npm run format:check
 
+            - name: Publish (dry-run)
+              if: ${{ github.event.inputs.dry-run == 'true' }}
+              run: npm publish --dry-run
+
             - name: Publish
+              if: ${{ github.event.inputs.dry-run != 'true' }}
               run: npm publish --provenance
               env:
                   NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
