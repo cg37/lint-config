@@ -42,8 +42,8 @@ jobs:
 
             - name: Publish (dry-run)
               if: ${{ github.event.inputs.dry-run == 'true' }}
-              run: npm publish --dry-run
+              run: npm publish --provenance --access public --dry-run
 
             - name: Publish
               if: ${{ github.event.inputs.dry-run != 'true' }}
-              run: npm publish
+              run: npm publish --provenance --access public
