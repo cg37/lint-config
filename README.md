@@ -80,16 +80,13 @@ export default eslintConfig;
 import eslintConfig from "@craig37/lint-config/eslint";
 
 export default [
-  ...eslintConfig,
-  {
-    rules: {
-      "no-console": "warn",
-      "@typescript-eslint/no-unused-vars": [
-        "error",
-        { argsIgnorePattern: "^_" },
-      ],
-    },
-  },
+    ...eslintConfig,
+    {
+        rules: {
+            "no-console": "warn",
+            "@typescript-eslint/no-unused-vars": ["error", { argsIgnorePattern: "^_" }]
+        }
+    }
 ];
 ```
 
@@ -136,7 +133,7 @@ export default eslintVueConfig;
 
 ```json
 {
-  "prettier": "@craig37/lint-config/prettier"
+    "prettier": "@craig37/lint-config/prettier"
 }
 ```
 
@@ -206,10 +203,10 @@ export default lintStagedConfig;
 
 ```json
 {
-  "lint-staged": {
-    "src/**/*.{js,cjs,mjs,jsx,ts,tsx,vue}": ["eslint --fix"],
-    "src/**/*.{html,json,css,scss}": ["prettier --write"]
-  }
+    "lint-staged": {
+        "src/**/*.{js,cjs,mjs,jsx,ts,tsx,vue}": ["eslint --fix"],
+        "src/**/*.{html,json,css,scss}": ["prettier --write"]
+    }
 }
 ```
 
@@ -217,12 +214,12 @@ export default lintStagedConfig;
 
 ```json
 {
-  "scripts": {
-    "lint": "eslint .",
-    "lint:fix": "eslint --fix .",
-    "format": "prettier --write .",
-    "format:check": "prettier --check ."
-  }
+    "scripts": {
+        "lint": "eslint .",
+        "lint:fix": "eslint --fix .",
+        "format": "prettier --write .",
+        "format:check": "prettier --check ."
+    }
 }
 ```
 
