@@ -24,6 +24,8 @@
         },
         "./prettier": {
             "types": "./dist/src/prettier.config.d.ts",
+            "import": "./dist/src/prettier.config.js",
+            "require": "./dist/src/prettier.config.cjs",
             "default": "./dist/src/prettier.config.js"
         },
         "./commitlint": {
@@ -35,10 +37,10 @@
         "dist/"
     ],
     "scripts": {
-        "build": "./node_modules/.bin/tsc",
+        "build": "./node_modules/.bin/tsc && node scripts/build-post.mjs",
         "prepublishOnly": "npm run build",
-        "format": "./node_modules/.bin/prettier --config prettier.config.js --write \"**/*.{ts,js,mjs,cjs,json,md}\"",
-        "format:check": "./node_modules/.bin/prettier --config prettier.config.js --check \"**/*.{ts,js,mjs,cjs,json,md}\""
+        "format": "./node_modules/.bin/prettier --write \"**/*.{ts,js,mjs,cjs,json,md}\"",
+        "format:check": "./node_modules/.bin/prettier --check \"**/*.{ts,js,mjs,cjs,json,md}\""
     },
     "keywords": [
         "eslint-config",

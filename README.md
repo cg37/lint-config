@@ -127,7 +127,9 @@ export default eslintVueConfig;
 
 ### Prettier
 
-**方式一** — `package.json` 中声明（推荐，无需额外文件）：
+消费者可通过以下任一方式使用共享 Prettier 配置：
+
+**方式一：`package.json`**（无需额外配置文件）：
 
 ```json
 {
@@ -135,7 +137,7 @@ export default eslintVueConfig;
 }
 ```
 
-**方式二** — `prettier.config.js`：
+**方式二：`prettier.config.js`**（或 `.prettierrc.js`）：
 
 ```js
 import prettierConfig from "@craig37/lint-config/prettier";
