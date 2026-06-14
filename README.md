@@ -13,7 +13,7 @@ TypeScript / React / Vue 项目共享代码规范配置包，开箱即用。
 ```bash
 pnpm add -D @craig37/lint-config \
   eslint prettier typescript-eslint @eslint/js globals \
-  eslint-plugin-prettier eslint-config-pretter
+  eslint-plugin-prettier eslint-config-prettier
 ```
 
 #### React 项目（额外安装）
