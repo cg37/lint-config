@@ -42,11 +42,11 @@ jobs:
               run: npm run format:check
 
             - name: Publish (dry-run)
-              if: ${{ github.event.inputs.dry-run == 'true' }}
+              if: ${{ github.event_name == 'workflow_dispatch' && github.event.inputs.dry-run == 'true' }}
               run: npm publish --provenance --access public --dry-run
 
             - name: Publish
-              if: ${{ github.event.inputs.dry-run != 'true' }}
+              if: ${{ github.event_name != 'workflow_dispatch' || github.event.inputs.dry-run != 'true' }}
               run: npm publish --provenance --access public
               env:
                   name: Publish Package
