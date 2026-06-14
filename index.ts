@@ -33,7 +33,7 @@
  */
 
 export { default as eslintConfig } from "./src/eslint.config.js";
-export { default as prettierConfig } from "./src/prettier.config.js";
+export { default as prettierConfig } from "./src/prettier-config.js";
 export { default as commitlintConfig } from "./src/commitlint.config.js";
 
 /**
@@ -42,6 +42,6 @@ export { default as commitlintConfig } from "./src/commitlint.config.js";
  * 或放在 lint-staged.config.js 中导出。
  */
 export const lintStagedConfig: Record<string, string[]> = {
-    "src/**/*.{js,cjs,mjs,jsx,ts,tsx,vue}": ["eslint --fix"],
-    "src/**/*.{html,json,css,scss}": ["prettier --write"]
+  "src/**/*.{js,cjs,mjs,jsx,ts,tsx,vue}": ["eslint --fix"],
+  "src/**/*.{html,json,css,scss}": ["prettier --write"],
 };

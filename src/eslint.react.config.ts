@@ -22,28 +22,28 @@ import pluginReactRefresh from "eslint-plugin-react-refresh";
  *   ];
  */
 export default [
-    ...baseConfig,
-    pluginReact.configs.flat.recommended,
-    pluginReact.configs.flat["jsx-runtime"],
-    {
-        plugins: {
-            "react-hooks": pluginReactHooks
-        },
-        rules: pluginReactHooks.configs.recommended.rules
+  ...baseConfig,
+  pluginReact.configs.flat.recommended,
+  pluginReact.configs.flat["jsx-runtime"],
+  {
+    plugins: {
+      "react-hooks": pluginReactHooks,
     },
-    {
-        plugins: {
-            "react-refresh": pluginReactRefresh
-        },
-        rules: {
-            "react-refresh/only-export-components": "warn"
-        }
+    rules: pluginReactHooks.configs.recommended.rules,
+  },
+  {
+    plugins: {
+      "react-refresh": pluginReactRefresh,
     },
-    {
-        settings: {
-            react: {
-                version: "detect"
-            }
-        }
-    }
+    rules: {
+      "react-refresh/only-export-components": "warn",
+    },
+  },
+  {
+    settings: {
+      react: {
+        version: "detect",
+      },
+    },
+  },
 ];
