@@ -118,20 +118,6 @@ export default commitlintConfig;
 
 ### 4. 可选：Husky 集成 + lint-staged
 
-**方式一：一键初始化（推荐）**
-
-```bash
-pnpm add -D husky lint-staged
-npx @craig37/lint-config-setup
-```
-
-自动完成：
-
-- 创建 `.husky/pre-commit`
-- 创建 `lint-staged.config.js`（导入本包的共享配置）
-
-**方式二：手动配置**
-
 ```bash
 pnpm add -D husky lint-staged
 pnpm exec husky init
@@ -146,10 +132,10 @@ echo 'pnpm exec commitlint --edit $1' > .husky/commit-msg
 创建 `lint-staged.config.js`：
 
 ```js
-import { lintStagedConfig } from "@craig37/lint-config";
-export default lintStagedConfig;
-```
-
+export default {
+    "**/*.{js,cjs,mjs,jsx,ts,tsx,vue}": ["eslint --fix"],
+    "**/*.{html,json,css,scss}": ["prettier --write"]
+};
 ```
 
 ---
@@ -219,4 +205,3 @@ Vue 额外规则：
 ## 许可
 
 MIT
-```
