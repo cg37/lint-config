@@ -127,6 +127,15 @@ echo 'pnpm exec lint-staged' > .husky/pre-commit
 echo 'pnpm exec commitlint --edit $1' > .husky/commit-msg
 ```
 
+创建 `lint-staged.config.js`：
+
+```js
+export default {
+    "src/**/*.{js,cjs,mjs,jsx,ts,tsx,vue}": ["eslint --fix"],
+    "src/**/*.{html,json,css,scss}": ["prettier --write"]
+};
+```
+
 ---
 
 ## 子路径导入说明
@@ -138,9 +147,6 @@ echo 'pnpm exec commitlint --edit $1' > .husky/commit-msg
 | `@craig37/lint-config/eslint-vue`   | Vue 3 + TypeScript 项目         |
 | `@craig37/lint-config/prettier`     | Prettier 配置                   |
 | `@craig37/lint-config/commitlint`   | commitlint 配置                 |
-| `@craig37/lint-config`（主入口）    | lint-staged 配置                |
-
-> **始终使用子路径导入**。主入口不含 React/Vue 配置，避免纯 Vue 项目被迫加载 React 插件（反之亦然）。
 
 ---
 
