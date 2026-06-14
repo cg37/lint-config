@@ -3,13 +3,7 @@
     "version": "1.0.8",
     "description": "Shared ESLint + Prettier + commitlint + lint-staged config for TypeScript / React / Vue projects",
     "type": "module",
-    "main": "./dist/index.js",
-    "types": "./dist/index.d.ts",
     "exports": {
-        ".": {
-            "types": "./dist/index.d.ts",
-            "default": "./dist/index.js"
-        },
         "./eslint": {
             "types": "./dist/src/eslint.config.d.ts",
             "default": "./dist/src/eslint.config.js"
