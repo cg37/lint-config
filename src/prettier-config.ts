@@ -14,13 +14,13 @@ import type { Config } from "prettier";
  * 修改此文件后运行 `npm run build`，postbuild 脚本会自动同步 CJS 版本。
  */
 const prettierConfig: Config = {
-  singleQuote: false,
-  semi: true,
-  tabWidth: 4,
-  useTabs: false,
-  trailingComma: "none",
-  endOfLine: "auto",
-  printWidth: 100,
+    singleQuote: false,
+    semi: true,
+    tabWidth: 4,
+    useTabs: false,
+    trailingComma: "none",
+    endOfLine: "auto",
+    printWidth: 100
 };
 
 export default prettierConfig;
