@@ -35,6 +35,19 @@ export default defineConfig([
             parserOptions: {
                 parser: tseslint.parser
             }
+        },
+        rules: {
+            // TypeScript/JavaScript 代码中未使用变量应当明确报错
+            "no-unused-vars": "off",
+            "@typescript-eslint/no-unused-vars": [
+                "error",
+                {
+                    vars: "all",
+                    args: "after-used",
+                    ignoreRestSiblings: false,
+                    caughtErrors: "none"
+                }
+            ]
         }
     },
     {
