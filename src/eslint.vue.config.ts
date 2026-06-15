@@ -21,7 +21,7 @@ import pluginVue from "eslint-plugin-vue";
  *   ];
  */
 export default [
-    ...baseConfig,
+    ...baseConfig.flat(Infinity),
     pluginVue.configs["flat/essential"],
     {
         files: ["**/*.vue"],
