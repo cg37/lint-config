@@ -23,7 +23,7 @@ import prettierRecommended from "eslint-plugin-prettier/recommended";
  */
 export default defineConfig([
     js.configs.recommended,
-    tseslint.configs.recommended,
+    ...tseslint.configs.recommended,
     prettierRecommended,
     {
         files: ["**/*.{js,mjs,cjs,ts,mts,cts}"],
