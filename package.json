@@ -1,6 +1,6 @@
 {
     "name": "@craig37/lint-config",
-    "version": "1.0.16",
+    "version": "1.0.17",
     "description": "Shared ESLint + Prettier + commitlint + lint-staged config for TypeScript / React / Vue projects",
     "type": "module",
     "exports": {
