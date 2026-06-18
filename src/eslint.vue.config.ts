@@ -1,37 +1,38 @@
+// 1. 【新增】引入 ESLint 的 Linter 类型
+import type { Linter } from "eslint";
 import baseConfig from "./eslint.config.js";
 import tseslint from "typescript-eslint";
 import pluginVue from "eslint-plugin-vue";
+import vueParser from "vue-eslint-parser";
 
-/**
- * 共享 ESLint 扁平化配置 (Flat Config) — Vue 版
- *
- * 适用于 Vue 3 + TypeScript 项目。
- * 在基础 TS 配置之上添加了 Vue 相关规则。
- *
- * 使用方式：
- *   // eslint.config.js
- *   import eslintVueConfig from "@craig37/lint-config/eslint-vue";
- *   export default eslintVueConfig;
- *
- * 或者自定义扩展：
- *   import eslintVueConfig from "@craig37/lint-config/eslint-vue";
- *   export default [
- *     ...eslintVueConfig,
- *     { rules: { "no-console": "warn" } }
- *   ];
- */
-export default [
+// 2. 【修改】将数组赋值给一个带有明确类型注解的变量
+const config: Linter.Config[] = [
     ...baseConfig,
-    ...pluginVue.configs["flat/essential"],
+    ...pluginVue.configs["flat/recommended"],
+
+    {
+        files: ["**/*.{ts,tsx,js,jsx}"],
+        languageOptions: {
+            parser: tseslint.parser
+        }
+    },
+
     {
         files: ["**/*.vue"],
         languageOptions: {
+            parser: vueParser,
             parserOptions: {
-                parser: tseslint.parser
+                parser: tseslint.parser,
+                sourceType: "module",
+                ecmaFeatures: {
+                    jsx: true
+                }
             }
         }
     },
+
     {
+        files: ["**/*.vue"],
         rules: {
             "vue/html-self-closing": [
                 "error",
@@ -44,7 +45,11 @@ export default [
                     svg: "always",
                     math: "always"
                 }
-            ]
+            ],
+            "vue/no-setup-props-reactivity-loss": "off"
         }
     }
 ];
+
+// 3. 【修改】导出该变量
+export default config;

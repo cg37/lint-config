@@ -32,13 +32,11 @@ export default defineConfig([
                 ...globals.browser,
                 ...globals.node
             },
-            parserOptions: {
-                parser: tseslint.parser
-            }
+            parser: tseslint.parser
         },
         rules: {
             // TypeScript/JavaScript 代码中未使用变量应当明确报错
-            "no-unused-vars": "off",
+            "no-unused-vars": "error",
             "@typescript-eslint/no-unused-vars": [
                 "error",
                 {

@@ -42,7 +42,6 @@ const commitlintConfig: UserConfig = {
         "body-max-line-length": [0]
     },
     ignores: [
-        // 跳过依赖更新机器人（Renovate / Dependabot）的提交
         (commit) => commit.startsWith("chore(deps)"),
         (commit) => commit.startsWith("fix(deps)"),
         (commit) => commit.startsWith("build(deps)")

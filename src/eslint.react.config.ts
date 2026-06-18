@@ -2,50 +2,49 @@ import baseConfig from "./eslint.config.js";
 import pluginReact from "eslint-plugin-react";
 import pluginReactHooks from "eslint-plugin-react-hooks";
 import pluginReactRefresh from "eslint-plugin-react-refresh";
-import eslintPluginPrettierRecommended from "eslint-plugin-prettier/recommended";
+// 优化点 3：只引入关闭冲突的配置，不再把 Prettier 作为 ESLint 规则运行
+import eslintConfigPrettier from "eslint-config-prettier";
 
 /**
  * 共享 ESLint 扁平化配置 (Flat Config) — React 版
- *
- * 适用于 React + TypeScript 项目。
- * 在基础 TS 配置之上添加了 React / JSX / Hooks 相关规则。
- *
- * 使用方式：
- *   // eslint.config.js
- *   import eslintReactConfig from "@craig37/lint-config/eslint-react";
- *   export default eslintReactConfig;
- *
- * 或者自定义扩展：
- *   import eslintReactConfig from "@craig37/lint-config/eslint-react";
- *   export default [
- *     ...eslintReactConfig,
- *     { rules: { "no-console": "warn" } }
- *   ];
  */
 export default [
     ...baseConfig,
-    pluginReact.configs.flat.recommended,
-    pluginReact.configs.flat["jsx-runtime"],
+
     {
+        files: ["**/*.{js,jsx,ts,tsx,mjs,cjs}"],
+
+        // 引入 React 官方推荐配置
+        ...pluginReact.configs.flat.recommended,
+        ...pluginReact.configs.flat["jsx-runtime"],
+
         plugins: {
+            "react-refresh": pluginReactRefresh,
             "react-hooks": pluginReactHooks
         },
-        rules: pluginReactHooks.configs.recommended.rules
-    },
-    {
-        plugins: {
-            "react-refresh": pluginReactRefresh
-        },
+
         rules: {
-            "react-refresh/only-export-components": "warn"
-        }
-    },
-    {
+            // 优化点 2：允许导出常量/类型，避免 main.tsx 报警告
+            "react-refresh/only-export-components": ["warn", { allowConstantExport: true }],
+            ...pluginReactHooks.configs.recommended.rules
+        },
+
         settings: {
             react: {
                 version: "detect"
             }
         }
     },
-    eslintPluginPrettierRecommended
+
+    // 针对特定文件的特殊处理（可选）
+    {
+        files: ["**/main.{js,jsx,ts,tsx}"],
+        rules: {
+            // 入口文件通常不需要 React Refresh 检查，直接关闭
+            "react-refresh/only-export-components": "off"
+        }
+    },
+
+    // 优化点 3：放在最后，纯粹用于关闭与 Prettier 冲突的 ESLint 规则
+    eslintConfigPrettier
 ];
